@@ -57,7 +57,7 @@ const Filters = ({ isFilterActive, toggleActive, refreshContent, changeLanguage,
             })}
           </select>
           <select  className='select' onChange={(e) => changeOrderBy(e)}>
-            {ordersOptions.map((el,i) => {
+            {ordersOptions.map((el, i) => {
               return <option key={i}>{el}</option>;
             })}
           </select>

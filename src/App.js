@@ -50,9 +50,12 @@ const App = () => {
     setLoading(true);
     setLanguage(value);
     service.filterStories(value, orderBy).then(res => {
-      setStories([...res.stories]);
+      const selectedLanguage = res.stories.filter((lang)=>{return value == lang.lang});
+      setStories([...selectedLanguage]);
       setLoading(false);
+      
     });
+
   };
 
   const changeOrderBy = ({ target: { value } }) => {

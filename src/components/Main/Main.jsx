@@ -15,7 +15,6 @@ const Img = styled("img")({
 });
 
 const Main = ({ stories, loadMoreStories }) => {
-    console.log(stories);
   const observer = useRef();
   const lastStoryElementRef = useCallback((node) => {
     if (observer.current) observer.current.disconnect();
