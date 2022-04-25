@@ -15,6 +15,7 @@ const Img = styled("img")({
 });
 
 const Main = ({ stories, loadMoreStories }) => {
+    console.log(stories);
   const observer = useRef();
   const lastStoryElementRef = useCallback((node) => {
     if (observer.current) observer.current.disconnect();
@@ -36,7 +37,7 @@ const Main = ({ stories, loadMoreStories }) => {
           if (stories.length === index + 1) {
             return (
               <Paper
-                key={story.id}
+                key={story.uuid + index}
                 ref={lastStoryElementRef}
                 sx={{
                   p: 2,
@@ -78,7 +79,7 @@ const Main = ({ stories, loadMoreStories }) => {
           } else {
             return (
               <Paper
-                key={story.id}
+                key={story.uuid + index}
                 sx={{
                   p: 2,
                   margin: "auto",

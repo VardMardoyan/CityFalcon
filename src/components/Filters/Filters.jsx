@@ -50,21 +50,21 @@ const Filters = ({ isFilterActive, toggleActive, refreshContent, changeLanguage,
           <select className='select' onChange={(e) => changeLanguage(e)}>
             {languageOptions.map((el) => {
               return (
-                <option key={el.id} value={el.lang}>
+                <option key={el.lang} value={el.lang}>
                   {el.name}
                 </option>
               );
             })}
           </select>
           <select  className='select' onChange={(e) => changeOrderBy(e)}>
-            {ordersOptions.map((el) => {
-              return <option key={el.id}>{el}</option>;
+            {ordersOptions.map((el,i) => {
+              return <option key={i}>{el}</option>;
             })}
           </select>
           <select  className='select' onChange={(e) => changeAutoRefreshTime(e)}>
-            {autoRefreshOptions.map((el) => {
+            {autoRefreshOptions.map((el, i) => {
               return (
-                <option value={el.time} key={el.id}>
+                <option value={el.time} key={i}>
                   {el.name}
                 </option>
               );
