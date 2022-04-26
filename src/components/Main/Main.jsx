@@ -36,17 +36,17 @@ const Main = ({ stories, loadMoreStories }) => {
           if (stories.length === index + 1) {
             return (
               <Paper
-                key={story.uuid + index}
-                ref={lastStoryElementRef}
-                sx={{
-                  p: 2,
-                  margin: "auto",
-                  marginTop: '10px',
-                  maxWidth: 900,
-                  width: 800,
-                  flexGrow: 1,
-                  backgroundColor: (theme) => (theme.palette.mode === "dark" ? "#1A2027" : "#fff"),
-                }}
+              key={story.uuid + index}
+              ref={lastStoryElementRef}
+              sx={{
+                p: 2,
+                margin: "auto",
+                marginTop: '10px',
+                maxWidth: 900,
+                width: 800,
+                flexGrow: 1,
+                backgroundColor: (theme) => (theme.palette.mode === "dark" ? "#1A2027" : "#fff"),
+              }}
               >
                 <Grid container spacing={4}>
                   <Grid item>

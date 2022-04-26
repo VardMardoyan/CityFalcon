@@ -14,6 +14,7 @@ const App = () => {
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [language, setLanguage] = useState('en');
   const [orderBy, setOrderBy] = useState('top');
+  const [minutes, setMinutes] = useState(1000)
 
   useEffect(() => {
     getStories();
@@ -29,9 +30,10 @@ const App = () => {
     });
   };
 
-  const loadMoreStories = () => {
+  const loadMoreStories = (value) => {
     service.getMoreStories(language, orderBy, nextPageToken).then((res) => {
-      setStories((prevData) => [...prevData, ...res.stories]);
+      const selectedLanguage = res.stories.filter((lang) => { return value == lang.lang });
+      setStories((prevData) => [...prevData, ...selectedLanguage]);
       setNextPageToken(res.next_page_token);
     });
   };
@@ -50,12 +52,10 @@ const App = () => {
     setLoading(true);
     setLanguage(value);
     service.filterStories(value, orderBy).then(res => {
-      const selectedLanguage = res.stories.filter((lang)=>{return value == lang.lang});
+      const selectedLanguage = res.stories.filter((lang) => { return value == lang.lang });
       setStories([...selectedLanguage]);
       setLoading(false);
-      
     });
-
   };
 
   const changeOrderBy = ({ target: { value } }) => {
@@ -76,6 +76,7 @@ const App = () => {
   const reset = () => {
     setLanguage('en');
     setOrderBy('top');
+    setMinutes(minutes);
     refreshContent();
   };
 
